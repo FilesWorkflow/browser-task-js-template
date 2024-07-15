@@ -14,13 +14,13 @@ Server-Task (TypeScript): https://github.com/FilesWorkflow/server-task-ts-templa
 1. Clone the desired template repository:
 
 ```
-git clone [repository-url]
+git clone git@github.com:FilesWorkflow/browser-task-js-template.git
 ```
 
 2. Navigate to the cloned directory and install dependencies:
 
 ```
-cd [template-directory]
+cd browser-task-js-template
 npm install
 ```
 

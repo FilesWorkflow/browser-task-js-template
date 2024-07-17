@@ -1,6 +1,6 @@
 <script src="FileSaver.min.js"></script>
 <div>
-    <input type="file" id="file" />
+    <input type="file" id="file" multiple/>
 </div>
 <script>
     document.getElementById('file').addEventListener('change', async(e) => {
@@ -10,9 +10,13 @@
         }
         import ('./task.js').then(async module => {
             if (module.default) {
-                const res = await module.default(files);
-                const blob = new Blob([res]);
-                saveAs(blob, `processed_${files[0].name}`);
+                const res = await module.default(files, {}, (progressMsg) => {
+                    console.log(progressMsg);
+                });
+                for (let i = 0; i < res.length; i++) {
+                    const blob = new Blob([res[i]]);
+                    saveAs(blob, `processed_${res[i].name}`);
+                }
             }
         });
     });
